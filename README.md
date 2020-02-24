@@ -1,6 +1,6 @@
 # SQL JLMFCompany Project
 
-#### Introduction
+### Introduction
 
  This project is about the SQL database owned by the fictitious enterprise JLMFCompany.
  The hypothetical goal of the previously mentioned company, is to serve as a low-cost 
@@ -8,7 +8,7 @@
  The purpose of this database is store information client information related with transactions 
  done throughout the company’s (non-existent) platform – “Expedia Airbnb App (EApp)”.
 
-#### What's included in this repository?
+### What's included in this repository?
 
 1. SQL_DATABASE_PROJECT.pptx 
 2. DATABASE_TECHNICAL_PAPER.docx 
@@ -33,7 +33,7 @@
 	* SQL_RESEARCH_QUESTIONS_SCRIPT.docx (SQL queries in Word document)
 	* SQL_RESEARCH_QUESTIONS.sql (SQL queries)
 
-#### Technologies
+### Technologies
 
 1. Microsoft Office:
 	* Microsoft Excel
