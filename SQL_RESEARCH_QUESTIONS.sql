@@ -1,0 +1,143 @@
+--SQL RESEARCH QUESTIONS--
+
+/*Question 1: Who are the users that opened an account but have not booked 
+any flights or reserved any Airbnb listing through the company's platform - “EApp”?*/
+
+SELECT 
+    UA.USER_ID, 
+    UA.FIRST_LAST_NAME, 
+    UR.TRANSACTION_DATE, 
+    UR.TRANSACTION_ID 
+FROM 
+    USER_ACCOUNT UA
+    FULL OUTER JOIN USER_RECORDS UR
+        ON UA.USER_ID = UR.USER_ID
+    FULL OUTER JOIN CARD_DETAILS CD
+        ON UA.USER_ID = CD.USER_ID
+WHERE UR.TRANSACTION_DATE IS NULL AND UR.TRANSACTION_DATE IS NULL
+;
+
+/*Question 2: What is the booking id, credit/debit card number, and transaction 
+identifier linked to order number 95?*/
+
+SELECT 
+   CD.CARD_NO,
+   UR.ORDER_NO,
+   B.BOOKING_ID,
+   UR.TRANSACTION_ID
+FROM 
+    BOOKINGS B 
+    JOIN USER_RECORDS UR
+        ON UR.BOOKING_ID = B.BOOKING_ID
+    JOIN CARD_DETAILS CD 
+        ON CD.USER_ID = UR.USER_ID
+WHERE UR.ORDER_NO < 96 AND UR.ORDER_NO > 94
+;
+
+/*Question 3: Who are the users (account holders) and their respective phone numbers 
+linked to every, and linked to every purchase or transaction that occurred after April 20, 2016?*/
+
+SELECT 
+    UA.FIRST_LAST_NAME,
+    UA.USER_ID,
+    UA.USER_PHONE 
+FROM 
+    USER_ACCOUNT UA
+    INNER JOIN EXPEDIA_PASSENGER_DATA EPD 
+        ON EPD.PASSENGER_NAME = UA.FIRST_LAST_NAME
+    INNER JOIN USER_RECORDS UR 
+        ON UR.USER_ID = UA.USER_ID 
+WHERE UR.TRANSACTION_DATE > '4/20/2016'
+;
+
+/*Question 4: What is the average overall rating for every Airbnb listing 
+in each city within the United States?*/
+
+SELECT 
+    FORMAT(ROUND(AVG(ABD.RATING_OVERALL),2),'0.0#') AS AVG_RATING_X_CITY,
+    HI.CITY
+FROM 
+    AIRBNB_BOOKING_DATA ABD
+    JOIN 
+        HOST_INFO HI
+        ON HI.HOST_LOCATION_ID = ABD.HOST_LOCATION_ID
+WHERE
+    HI.COUNTRY LIKE '%UNITED STATES%'
+GROUP BY 
+    HI.CITY
+ORDER BY 
+    AVG_RATING_X_CITY DESC
+;
+
+/*Question 5: What is the percentage of guests per category (adults, minors and children) in each Airbnb 
+reservation (AIR_CONFIRMATION_ID)? What are the host names and arrival dates linked to every reservation?*/
+
+SELECT 
+    HI.HOST_NAME, 
+    ARD.AIR_CONFIRMATION_ID,
+    ARD.START_DATE,
+    ARD.END_DATE, 
+    FORMAT(ROUND(SUM(ARD.GUEST_ADULT_NO) * 100.0 / SUM(ABD.TOTAL_GUESTS),3),'0.0#') AS GUEST_ADULT_PERCENT,
+    FORMAT(ROUND(SUM(ARD.GUEST_CHILDREN_NO) * 100.0 / SUM(ABD.TOTAL_GUESTS),3),'0.0#') AS GUEST_CHILDREN_PERCENT,
+    FORMAT(ROUND(SUM(ARD.GUEST_INFANT_NO) *100.0 / SUM(ABD.TOTAL_GUESTS),3),'0.0#') AS GUEST_INFANT_PERCENT
+FROM 
+    AIRBNB_RESERVATION_DETAILS ARD
+    JOIN 
+        AIRBNB_BOOKING_DATA ABD
+        ON ABD.AIR_CONFIRMATION_ID = ARD.AIR_CONFIRMATION_ID 
+    JOIN 
+        HOST_INFO HI
+        ON HI.HOST_ID = ABD.HOST_ID 
+WHERE 
+    ARD.START_DATE > '12/31/2018' AND ARD.START_DATE < '1/1/2020'
+GROUP BY 
+    ARD.AIR_CONFIRMATION_ID, HI.HOST_NAME, ARD.START_DATE, ARD.END_DATE
+ORDER BY 
+    HI.HOST_NAME ASC
+;
+
+/*Question 6: What is the sum of every flight passenger per flight confirmation id? */
+
+SELECT 
+    EPT.FLIGHT_CONFIRMATION_ID, 
+    COUNT(EPT.FLIGHT_CONFIRMATION_ID) AS PASSENGER_COUNT 
+FROM 
+    EXPEDIA_PASSENGER_TICKETS EPT
+GROUP BY EPT.FLIGHT_CONFIRMATION_ID
+
+UNION ALL
+
+SELECT 
+    'SUM' FLIGHT_CONFIRMATION_ID, 
+    COUNT(FLIGHT_CONFIRMATION_ID) 
+FROM 
+    EXPEDIA_PASSENGER_TICKETS
+;
+
+/*Question 7: What are the longest round-trips and nonstop flights that have been booked?*/
+
+SELECT 
+    FLIGHT_CONFIRMATION_ID, 
+    DEPT_FIRST_FLIGHT_NO,
+    DEPT_TRIP_DURATION_HR,
+    RTRN_FIRST_FLIGHT_NO,
+    RTRN_TRIP_DURATION_HR,
+    FORMAT(SUM(DEPT_TRIP_DURATION_HR) + SUM(RTRN_TRIP_DURATION_HR),'0.0#') AS TOTAL_TRIP_DURATION
+
+FROM 
+    EXPEDIA_TRIP_DETAILS
+WHERE 
+    RTRN_FLIGHT_TYPE != 'NA' AND RTRN_FLIGHT_TYPE != 'LAYOVER'
+GROUP BY 
+    FLIGHT_CONFIRMATION_ID, 
+    DEPT_FIRST_FLIGHT_NO, 
+    RTRN_FIRST_FLIGHT_NO, 
+    DEPT_TRIP_DURATION_HR, 
+    RTRN_TRIP_DURATION_HR
+HAVING
+    COUNT(DEPT_FIRST_FLIGHT_NO) = 1 AND COUNT(DEPT_SECOND_FLIGHT_NO) = 0 AND COUNT(DEPT_THIRD_FLIGHT_NO) = 0
+ORDER BY RTRN_TRIP_DURATION_HR DESC
+;
+
+--END
+
