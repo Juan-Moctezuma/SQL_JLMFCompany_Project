@@ -25,6 +25,18 @@
 7. Tables' folders (Excel and CSV):
 	* JLMFCompany_TABLES_CSV
 	* JLMFCompany_TABLES_EXCEL
+	* Tables' names:
+		A) AIRBNB_BOOKING_DATA
+		B) AIRBNB_RESERVATION_DETAILS
+		C) BOOKINGS
+		D) CARD_DETAILS
+		E) EXPEDIA_PASSENGER_DATA
+		F) EXPEDIA_PASSENGER_TICKETS
+		G) EXPEDIA_TRIP_DETAILS
+		H) HOST_INFO
+		I) REVIEWS
+		J) USER_ACCOUNT
+		Q) USER_RECORDS
 8. JLMFCompany's tables code: (presented through a Word document and SQL script/query)
 	* JLMFCompany_TABLES_SCRIPT.docx
 	* JLMFCompany_TABLES.sql
