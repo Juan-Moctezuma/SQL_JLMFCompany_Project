@@ -10,7 +10,7 @@
 
 ### What's included in this repository?
 
-1. SQL_DATABASE_PROJECT.pptx 
+1. SQL_DATABASE_PROJECT.pptx (PowerPoint PRESENTATION)
 2. DATABASE_TECHNICAL_PAPER.docx 
 	* This file serves as the company's database documentation and diagram.
 3. JLMFCompany_SQL_DATABASE_DESCRIPTION.xlsx
