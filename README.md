@@ -11,8 +11,7 @@
 ### Directory Tree
 <img src="Image/JLMFCompany.png" width="50%">
 
-### What's included in this repository?
-
+### What's included in the tree branches?
 1. SQL_DATABASE_PROJECT.pptx (PowerPoint PRESENTATION)
 2. DATABASE_TECHNICAL_PAPER.docx 
 	* This file serves as the company's database documentation and diagram.
@@ -28,7 +27,7 @@
 7. Tables' folders (Excel and CSV):
 	* JLMFCompany_TABLES_CSV
 	* JLMFCompany_TABLES_EXCEL
-	* Tables' names:
+	* Tables' names (for both previous folders):
 		1. AIRBNB_BOOKING_DATA
 		2. AIRBNB_RESERVATION_DETAILS
 		3. BOOKINGS
