@@ -8,6 +8,9 @@
  The purpose of this database is store information client information related with transactions 
  done throughout the company’s (non-existent) platform – “Expedia Airbnb App (EApp)”.
 
+### Directory Tree
+<img src="Image/JLMFCompany.png" width="50%">
+
 ### What's included in this repository?
 
 1. SQL_DATABASE_PROJECT.pptx (PowerPoint PRESENTATION)
@@ -52,7 +55,7 @@
 	* Microsoft PowerPoint
 	* Microsoft Word
 2. SQL Server with Azure Data Studio (platform)
-3. Python 3
+3. Python 3 (Packages):
 	* xlwt
 	* Faker
 4. Draw.io - Online Diagramming Software
