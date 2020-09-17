@@ -9,7 +9,7 @@
  done throughout the company’s (non-existent) platform – “Expedia Airbnb App (EApp)”.
 
 ### Directory Tree
-<img src="Image/JLMFCompany.png" width="50%">
+<img src="Image/JLMFCompany-v2.png" width="50%">
 
 ### What's included in the tree branches?
 1. SQL_DATABASE_PROJECT.pptx (PowerPoint PRESENTATION)
