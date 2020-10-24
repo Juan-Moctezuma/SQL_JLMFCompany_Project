@@ -8,6 +8,9 @@
  The purpose of this database is store information client information related with transactions 
  done throughout the company’s (non-existent) platform – “Expedia Airbnb App (EApp)”.
 
+### Project GIF
+<img src="Image/JLMFCompany.gif" width="80%">
+
 ### Directory Tree
 <img src="Image/JLMFCompany-v2.png" width="50%">
 
