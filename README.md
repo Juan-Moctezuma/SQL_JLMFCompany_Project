@@ -7,6 +7,8 @@
  third party that allows clients to book flights with Expedia and/or reserve Airbnb listings. 
  The purpose of this database is store information client information related with transactions 
  done throughout the company’s (non-existent) platform – “Expedia Airbnb App (EApp)”.
+### Data Model and Research Queries
+Jupyter Notebook Link: https://nbviewer.jupyter.org/github/Juan-Moctezuma/SQL_JLMFCompany_Project/blob/master/Data_Model.ipynb
 
 ### Project GIF
 <img src="Image/JLMFCompany.gif" width="80%">
@@ -51,13 +53,13 @@
 	* SQL_RESEARCH_QUESTIONS.sql (SQL queries)
 
 ### Technologies
-
-1. Microsoft Office:
+1. Jupyter Notebook
+2. Microsoft Office:
 	* Microsoft Excel
 	* Microsoft PowerPoint
 	* Microsoft Word
-2. SQL Server with Azure Data Studio (platform)
-3. Python 3 (Packages):
+3. SQL Server with Azure Data Studio (platform)
+4. Python 3 (Packages):
 	* xlwt
 	* Faker
-4. Draw.io - Online Diagramming Software
+5. Draw.io - Online Diagramming Software
